@@ -1,0 +1,43 @@
+<mat-radio-group class="radio-group" (change)="changePeriod($event)">
+  <mat-radio-button class="radio-button" *ngFor="let period of periods" [value]="period">
+    {{ period | date: 'dd/MM/yyyy' }}
+  </mat-radio-button>
+</mat-radio-group>
+<mat-accordion [multi]="true">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Active
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <app-task-four-table
+      [data]="activeData">
+    </app-task-four-table>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Sold
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <app-task-four-table
+      [data]="soldData">
+    </app-task-four-table>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        WriteOffData
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <app-task-four-table
+      [data]="writeoffData">
+    </app-task-four-table>
+  </mat-expansion-panel>
+
+</mat-accordion>

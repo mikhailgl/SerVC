@@ -1,0 +1,15 @@
+.card {
+  justify-self: center;
+  float: left;
+  margin-left: 45%;
+  align-content: center;
+}
+
+.header {
+  float: left;
+}
+
+.data {
+  float: left;
+  margin-left: 15%;
+}

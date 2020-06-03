@@ -1,0 +1,16 @@
+.radio-button {
+  padding: 5px;
+  margin: 5px;
+}
+
+.radio-group {
+  padding: 10px;
+  float: left;
+  display: grid;
+  margin-right: 20px;
+}
+
+.chart {
+  float: right;
+  margin-right: 30%;
+}

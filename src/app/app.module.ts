@@ -9,6 +9,13 @@ import { TaskTwoComponent } from './task-two/task-two.component';
 import { TaskThreeComponent } from './task-three/task-three.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
+import { TaskFourComponent } from './task-four/task-four.component';
+import {MatTableModule} from '@angular/material/table';
+import { TaskFourTableComponent } from './task-four/task-four-table/task-four-table.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -16,7 +23,9 @@ import {MatCardModule} from '@angular/material/card';
     AppComponent,
     TaskOneComponent,
     TaskTwoComponent,
-    TaskThreeComponent
+    TaskThreeComponent,
+    TaskFourComponent,
+    TaskFourTableComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +33,12 @@ import {MatCardModule} from '@angular/material/card';
     BrowserAnimationsModule,
     GoogleChartsModule,
     MatTabsModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatExpansionModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

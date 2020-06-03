@@ -21,7 +21,7 @@ export class TaskOneComponent implements OnInit {
       slantedText: true
     },
     vAxis: {
-      0: {format: 'long'},
+      0: {format: 'short'},
       1: {}
     },
     seriesType: 'bars',

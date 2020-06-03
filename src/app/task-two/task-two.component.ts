@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {CompanyData, TotalsData} from '../DataFile';
+import {Component, OnInit, SimpleChanges} from '@angular/core';
+import {CompanyData, getPeriods, TotalsData} from '../DataFile';
+import {TaskFourTableDataSource} from '../task-four/task-four-table/task-four-table-datasource';
 
 @Component({
   selector: 'app-task-two',
@@ -8,13 +9,12 @@ import {CompanyData, TotalsData} from '../DataFile';
 })
 export class TaskTwoComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   title = 'By Companies';
   type = 'PieChart';
-  data = [
-
-  ];
+  data = [];
   columns = ['Company', 'FMV'];
   options = {
     pieHole: 0.5
@@ -23,11 +23,22 @@ export class TaskTwoComponent implements OnInit {
   width = 1000;
   height = 400;
 
+  periods: Date[] = [];
+
   ngOnInit() {
     CompanyData.forEach(el => {
-
       this.data.push([el.company, el.FMV]);
     });
+    this.periods = getPeriods();
   }
 
+  changePeriod(event) {
+    this.data = [];
+    CompanyData.forEach(el => {
+      if (el.investmentDate < event.value) {
+        this.data.push([el.company, el.FMV]);
+      }
+    });
+
+  }
 }

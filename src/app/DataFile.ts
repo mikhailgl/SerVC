@@ -1,6 +1,34 @@
 import { TotalsDataPoint, CompanyDataPoint, IRRDataPoint } from './models';
 import {CashFlow} from '@webcarrot/xirr/index';
+import * as _ from 'lodash';
 
+export function getPeriods(): Date[] {
+  const periods = [];
+  CompanyData.forEach(el => {
+    if (!periods.find(period => {
+      return period.getTime() === closestPeriod(el.investmentDate).getTime();
+    })) {
+      periods.push(closestPeriod(el.investmentDate));
+    }
+  });
+  periods.sort((a, b) => {
+    return a.getTime() - b.getTime();
+  });
+  return periods;
+}
+
+export function closestPeriod(date: Date) {
+  const month = date.getMonth() + 1;
+  if (month / 3 <= 1) {
+    return new Date(date.getFullYear(), 2, 31);
+  } else if (month / 3 <= 2) {
+    return new Date(date.getFullYear(), 5, 30);
+  } else if (month / 3 <= 3) {
+    return new Date(date.getFullYear(), 8, 30);
+  } else {
+    return new Date(date.getFullYear(), 11, 31);
+  }
+}
 
 export const TotalsData: TotalsDataPoint[] = [
   {period: new Date(2015, 11), cost: 116400, unrealized: 0, realized: 0, multiple: 1},

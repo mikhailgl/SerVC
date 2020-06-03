@@ -1,9 +1,19 @@
-<google-chart #chart
-              [title]="title"
-              [type]="type"
-              [data]="data"
-              [columns]="columns"
-              [options]="options"
-              [width]="width"
-              [height]="height">
-</google-chart>
+<div>
+
+  <mat-radio-group class="radio-group" (change)="changePeriod($event)">
+    <mat-radio-button class="radio-button" *ngFor="let period of periods" [value]="period">
+      {{ period | date: 'dd/MM/yyyy' }}
+    </mat-radio-button>
+  </mat-radio-group>
+
+  <google-chart #chart class="chart"
+                [title]="title"
+                [type]="type"
+                [data]="data"
+                [columns]="columns"
+                [options]="options"
+                [width]="width"
+                [height]="height">
+  </google-chart>
+
+</div>

@@ -16,7 +16,6 @@ export class TaskThreeComponent implements OnInit {
 
   ngOnInit(): void {
     try {
-      console.log('XIRR:', xirr(flows), 'of', flows);
       this.xirr = xirr(flows);
     } catch (err) {
       console.log(err);
