@@ -16,8 +16,9 @@ export class TaskFourTableComponent implements AfterViewInit, OnInit, OnChanges 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<CompanyDataPoint>;
   @Input() data: CompanyDataPoint[] = CompanyData;
+  @Input() totalsData: CompanyDataPoint;
+  @Input() showData = true;
   dataSource: TaskFourTableDataSource;
-  totalsData;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['Company', 'FMV', 'Cost', 'Gain', 'GIRR', 'Holding', 'GMultiple', 'Total Raised', 'Company Valuation', 'InvestmentDate'];
@@ -33,26 +34,12 @@ export class TaskFourTableComponent implements AfterViewInit, OnInit, OnChanges 
   }
 
   dataSetup() {
-    this.totalsData = {
-      totalCost: 0,
-      totalFMV: 0,
-      totalGain: 0,
-      totalGMultiple: 0,
-      totalRaised: 0,
-    };
-    this.dataSource = new TaskFourTableDataSource(this.data);
-    this.data.forEach(company => {
-      this.totalsData.totalCost += company.cost;
-      this.totalsData.totalFMV += company.FMV;
-      this.totalsData.totalGain += company.gain;
-      this.totalsData.totalRaised += company.totalRaised;
-    });
-    this.totalsData.totalGMultiple = this.totalsData.totalFMV / this.totalsData.totalCost;
+    this.dataSource = new TaskFourTableDataSource(this.showData ? this.data : []);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     /* tslint:disable:no-string-literal */
-    if (changes['data'] && this.data && this.sort && this.paginator) {
+    if ((changes['data'] || changes['showData']) && this.data && this.sort && this.paginator) {
       this.dataSetup();
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;

@@ -13,7 +13,7 @@
     <ng-container matColumnDef="FMV" class="column">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>FMV(M)</th>
       <td mat-cell *matCellDef="let row">{{row.FMV/1000000 | number:'1.2-2' | currency: 'USD'}}</td>
-      <td mat-footer-cell *matFooterCellDef> {{totalsData.totalFMV/1000000 | number:'1.2-2' | currency: 'USD'}} </td>
+      <td mat-footer-cell *matFooterCellDef> {{totalsData?.FMV/1000000 | number:'1.2-2' | currency: 'USD'}} </td>
     </ng-container>
 
     <!-- Company Column -->
@@ -27,21 +27,21 @@
     <ng-container matColumnDef="Cost" class="column">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Cost(M)</th>
       <td mat-cell *matCellDef="let row">{{row.cost/1000000 | number:'1.2-2' | currency: 'USD'}}</td>
-      <td mat-footer-cell *matFooterCellDef> {{totalsData.totalCost/1000000 | number:'1.2-2' | currency: 'USD'}} </td>
+      <td mat-footer-cell *matFooterCellDef> {{totalsData?.cost/1000000 | number:'1.2-2' | currency: 'USD'}} </td>
     </ng-container>
 
     <!-- Company Column -->
     <ng-container matColumnDef="Gain" class="column">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Gain(M)</th>
       <td mat-cell *matCellDef="let row">{{row.gain/1000000 | number:'1.2-2' | currency: 'USD'}}</td>
-      <td mat-footer-cell *matFooterCellDef> {{totalsData.totalGain/1000000 | number:'1.2-2' | currency: 'USD'}} </td>
+      <td mat-footer-cell *matFooterCellDef> {{totalsData?.gain/1000000 | number:'1.2-2' | currency: 'USD'}} </td>
     </ng-container>
 
     <!-- Company Column -->
     <ng-container matColumnDef="GMultiple">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>GMultiple</th>
       <td mat-cell *matCellDef="let row">{{row.GMultiple | number: '1.2-2'}}</td>
-      <td mat-footer-cell *matFooterCellDef> {{totalsData.totalGMultiple | number: '1.2-2'}} </td>
+      <td mat-footer-cell *matFooterCellDef> {{totalsData?.GMultiple | number: '1.2-2'}} </td>
     </ng-container>
 
     <!-- Company Column -->
@@ -62,7 +62,7 @@
     <ng-container matColumnDef="Total Raised">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>TotalRaised(M)</th>
       <td mat-cell *matCellDef="let row">{{row.totalRaised/1000000 | number:'1.2-2' | currency: 'USD'}}</td>
-      <td mat-footer-cell *matFooterCellDef> {{totalsData.totalRaised/1000000 | number:'1.2-2' | currency: 'USD'}} </td>
+      <td mat-footer-cell *matFooterCellDef> {{totalsData?.totalRaised/1000000 | number:'1.2-2' | currency: 'USD'}} </td>
     </ng-container>
 
     <!-- Company Column -->
@@ -74,7 +74,7 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
 
   </table>
 

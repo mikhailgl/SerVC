@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {CompanyData} from './DataFile';
 
 @Component({
   selector: 'app-root',

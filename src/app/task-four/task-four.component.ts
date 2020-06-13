@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CompanyData, getPeriods} from '../DataFile';
+import {CompanyDataPoint} from '../models';
 
 @Component({
   selector: 'app-task-four',
@@ -18,13 +19,21 @@ export class TaskFourComponent implements OnInit {
     return el.status === 'Write-Off';
   });
 
+  activeTotal: CompanyDataPoint;
+  soldTotal: CompanyDataPoint;
+  writeoffTotal: CompanyDataPoint;
+  allTotal: CompanyDataPoint;
   periods: Date[] = [];
+  showActive = true;
+  showSold = true;
+  showWriteoff = true;
 
   constructor() {
   }
 
   ngOnInit() {
     this.periods = getPeriods();
+    this.dataSetup();
   }
 
   changePeriod(event) {
@@ -37,6 +46,48 @@ export class TaskFourComponent implements OnInit {
     this.writeoffData = CompanyData.filter(el => {
       return el.status === 'Write-Off' && el.investmentDate < event.value;
     });
+    this.dataSetup();
+  }
 
+  dataSetup() {
+    this.activeTotal = this.setupTotals(this.activeData);
+    this.soldTotal = this.setupTotals(this.soldData);
+    this.writeoffTotal = this.setupTotals(this.writeoffData);
+    const allTotals = [this.activeTotal, this.soldTotal, this.writeoffTotal];
+    this.allTotal = this.setupTotals(allTotals);
+  }
+
+  setupTotals(data: CompanyDataPoint[]) {
+    const totalsData: CompanyDataPoint = new CompanyDataPoint();
+    totalsData.company = 'Total';
+    totalsData.cost = 0;
+    totalsData.FMV = 0;
+    totalsData.gain = 0;
+    totalsData.GMultiple = 0;
+    totalsData.totalRaised = 0;
+    data.forEach(company => {
+      totalsData.cost += company.cost;
+      totalsData.FMV += company.FMV;
+      totalsData.gain += company.gain;
+      totalsData.totalRaised += company.totalRaised;
+    });
+    totalsData.GMultiple = totalsData.FMV / totalsData.cost;
+    return totalsData;
+  }
+
+  toggleActive() {
+    this.showActive = !this.showActive;
+  }
+
+  toggleSold() {
+    this.showSold = !this.showSold;
+  }
+
+  toggleWriteoff() {
+    this.showWriteoff = !this.showWriteoff;
   }
 }
+
+
+
+

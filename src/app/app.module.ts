@@ -25,7 +25,8 @@ import {MatRadioModule} from '@angular/material/radio';
     TaskTwoComponent,
     TaskThreeComponent,
     TaskFourComponent,
-    TaskFourTableComponent
+    TaskFourTableComponent,
+
   ],
   imports: [
     BrowserModule,

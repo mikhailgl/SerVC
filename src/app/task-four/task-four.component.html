@@ -3,41 +3,60 @@
     {{ period | date: 'dd/MM/yyyy' }}
   </mat-radio-button>
 </mat-radio-group>
-<mat-accordion [multi]="true">
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
+
+  <mat-expansion-panel expanded disabled>
+    <mat-expansion-panel-header (click)="toggleActive()" style="color: black">
       <mat-panel-title>
         Active
       </mat-panel-title>
     </mat-expansion-panel-header>
 
     <app-task-four-table
-      [data]="activeData">
+      [data]="activeData"
+      [totalsData]="activeTotal"
+      [showData]="showActive">
     </app-task-four-table>
   </mat-expansion-panel>
 
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
+  <mat-expansion-panel expanded disabled>
+    <mat-expansion-panel-header (click)="toggleSold()" style="color: black">
       <mat-panel-title>
         Sold
       </mat-panel-title>
     </mat-expansion-panel-header>
 
     <app-task-four-table
-      [data]="soldData">
+      [data]="soldData"
+      [totalsData]="soldTotal"
+    [showData]="showSold">
     </app-task-four-table>
   </mat-expansion-panel>
 
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
+  <mat-expansion-panel expanded disabled>
+    <mat-expansion-panel-header (click)="toggleWriteoff()" style="color: black">
       <mat-panel-title>
         WriteOffData
       </mat-panel-title>
     </mat-expansion-panel-header>
 
     <app-task-four-table
-      [data]="writeoffData">
+      [data]="writeoffData"
+      [totalsData]="writeoffTotal"
+    [showData]="showWriteoff">
     </app-task-four-table>
   </mat-expansion-panel>
 
-</mat-accordion>
+<mat-expansion-panel expanded disabled>
+  <mat-expansion-panel-header style="color: black">
+    <mat-panel-title>
+      Total
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <app-task-four-table
+    [data]=""
+    [totalsData]="allTotal"
+    [showData]="false">
+  </app-task-four-table>
+</mat-expansion-panel>
+
