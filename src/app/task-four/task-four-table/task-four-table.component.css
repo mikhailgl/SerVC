@@ -6,3 +6,44 @@
 .mat-footer-cell{
   font-weight: bold;
 }
+
+.mat-column-Company{
+  width: 15%;
+}
+
+.mat-column-FMV{
+  width: 10%;
+}
+
+.mat-column-InvestmentDate{
+  width: 20%;
+}
+
+.mat-column-Cost{
+  width: 10%;
+}
+
+.mat-column-Gain{
+  width: 10%;
+}
+
+.mat-column-GMultiple{
+  width: 10%;
+}
+
+.mat-column-GIRR{
+  width: 10%;
+}
+
+.mat-column-Holding{
+  width: 10%;
+}
+
+.mat-column-TotalRaised{
+  width: 10%;
+}
+
+.mat-column-CompanyValuation{
+  width: 10%;
+}
+

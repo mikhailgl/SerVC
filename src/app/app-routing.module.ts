@@ -6,7 +6,6 @@ import {TaskTwoComponent} from './task-two/task-two.component';
 
 const routes: Routes = [
   {path: 'task-one', component: TaskOneComponent},
-  {path: 'task-two', component: TaskTwoComponent},
   {path: 'task-two', component: TaskTwoComponent}
 ];
 

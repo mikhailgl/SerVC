@@ -1,5 +1,5 @@
 import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator } from '@angular/material/paginator';
+// import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
@@ -15,7 +15,7 @@ import {Input} from '@angular/core';
  */
 export class TaskFourTableDataSource extends DataSource<CompanyDataPoint> {
   data: CompanyDataPoint[];
-  paginator: MatPaginator;
+  // paginator: MatPaginator;
   sort: MatSort;
 
   constructor(data: CompanyDataPoint[]) {
@@ -33,12 +33,12 @@ export class TaskFourTableDataSource extends DataSource<CompanyDataPoint> {
     // stream for the data-table to consume.
     const dataMutations = [
       observableOf(this.data),
-      this.paginator.page,
+      // this.paginator.page,
       this.sort.sortChange
     ];
 
     return merge(...dataMutations).pipe(map(() => {
-      return this.getPagedData(this.getSortedData([...this.data]));
+      return this.getSortedData([...this.data]);
     }));
   }
 
@@ -53,8 +53,8 @@ export class TaskFourTableDataSource extends DataSource<CompanyDataPoint> {
    * this would be replaced by requesting the appropriate data from the server.
    */
   private getPagedData(data: CompanyDataPoint[]) {
-    const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
-    return data.splice(startIndex, this.paginator.pageSize);
+    // const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+    // return data.splice(startIndex, this.paginator.pageSize);
   }
 
   /**

@@ -27,6 +27,12 @@ export class TaskFourComponent implements OnInit {
   showActive = true;
   showSold = true;
   showWriteoff = true;
+  config = {
+    displayKey:"description", //if objects array passed which key to be displayed defaults to description
+    search:true, //true/false for the search functionlity defaults to false,
+    placeholder:'Select', // text to be displayed when no item is selected defaults to Select,
+    customComparator: ()=>{}, // a custom function using which user wants to sort the items. default is undefined and Array.sort() will be used in that case,    
+  }
 
   constructor() {
   }

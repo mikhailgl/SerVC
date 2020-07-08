@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
+// import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTable} from '@angular/material/table';
 import {TaskFourTableDataSource} from './task-four-table-datasource';
@@ -12,7 +12,7 @@ import {CompanyData} from '../../DataFile';
   styleUrls: ['./task-four-table.component.css']
 })
 export class TaskFourTableComponent implements AfterViewInit, OnInit, OnChanges {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<CompanyDataPoint>;
   @Input() data: CompanyDataPoint[] = CompanyData;
@@ -21,7 +21,8 @@ export class TaskFourTableComponent implements AfterViewInit, OnInit, OnChanges 
   dataSource: TaskFourTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['Company', 'FMV', 'Cost', 'Gain', 'GIRR', 'Holding', 'GMultiple', 'Total Raised', 'Company Valuation', 'InvestmentDate'];
+  // tslint:disable-next-line:max-line-length
+  displayedColumns = ['Company', 'FMV', 'Cost', 'Gain', 'GIRR', 'Holding', 'GMultiple', 'TotalRaised', 'CompanyValuation', 'InvestmentDate'];
 
   ngOnInit() {
     this.dataSetup();
@@ -29,7 +30,7 @@ export class TaskFourTableComponent implements AfterViewInit, OnInit, OnChanges 
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+    // this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
 
@@ -39,10 +40,9 @@ export class TaskFourTableComponent implements AfterViewInit, OnInit, OnChanges 
 
   ngOnChanges(changes: SimpleChanges): void {
     /* tslint:disable:no-string-literal */
-    if ((changes['data'] || changes['showData']) && this.data && this.sort && this.paginator) {
+    if ((changes['data'] || changes['showData']) && this.data && this.sort) {
       this.dataSetup();
       this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
       this.table.dataSource = this.dataSource;
     }
   }
